@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GabonExplore – Découvrez le Cœur de l'Afrique</title>
+<meta name="description" content="Réservez vos voyages au Gabon. Safaris, forêts tropicales, parcs nationaux. GabonExplore – votre guide de tourisme premium.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="logo">Gabon<span>Explore</span></a>
+  <ul class="nav-links">
+    <li><a href="#destinations">Destinations</a></li>
+    <li><a href="#experiences">Expériences</a></li>
+    <li><a href="pages/reservations.html">Réservations</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="pages/reservations.html" class="btn-primary">Réserver</a>
+    <button class="btn-menu" id="menuBtn" aria-label="Menu">&#9776;</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-shapes">
+      <div class="shape s1"></div>
+      <div class="shape s2"></div>
+      <div class="shape s3"></div>
+    </div>
+  </div>
+  <div class="hero-content">
+    <span class="hero-badge">🌿 Gabon · Afrique Centrale</span>
+    <h1>L'Afrique<br><em>Authentique</em><br>Vous Attend</h1>
+    <p>Forêts primaires, gorilles sauvages, plages immaculées.<br>Vivez une expérience inoubliable au cœur du Gabon.</p>
+    <div class="hero-cta">
+      <a href="pages/reservations.html" class="btn-hero">Explorer nos circuits</a>
+      <a href="#destinations" class="btn-ghost">Découvrir ↓</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>13</strong><span>Parcs Nationaux</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><strong>85%</strong><span>Forêt tropicale</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><strong>900km</strong><span>de Côtes</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Défiler</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section class="destinations" id="destinations">
+  <div class="section-header">
+    <span class="tag">Nos Destinations</span>
+    <h2>Explorez le Gabon</h2>
+    <p>Des expériences uniques dans chaque coin de ce pays exceptionnel</p>
+  </div>
+  <div class="destinations-grid">
+    <article class="dest-card featured" data-dest="lope">
+      <div class="card-img img-lope"></div>
+      <div class="card-body">
+        <span class="card-tag">Patrimoine UNESCO</span>
+        <h3>Parc de la Lopé</h3>
+        <p>Rencontres avec les gorilles et les éléphants dans la forêt équatoriale.</p>
+        <div class="card-footer">
+          <span class="price">À partir de <strong>290 €</strong></span>
+          <a href="pages/reservations.html?dest=lope" class="btn-card">Réserver</a>
+        </div>
+      </div>
+    </article>
+    <article class="dest-card" data-dest="loango">
+      <div class="card-img img-loango"></div>
+      <div class="card-body">
+        <span class="card-tag">Côtier</span>
+        <h3>Parc de Loango</h3>
+        <p>Hippopotames sur la plage, baleines et éléphants en bord de mer.</p>
+        <div class="card-footer">
+          <span class="price">À partir de <strong>350 €</strong></span>
+          <a href="pages/reservations.html?dest=loango" class="btn-card">Réserver</a>
+        </div>
+      </div>
+    </article>
+    <article class="dest-card" data-dest="libreville">
+      <div class="card-img img-libreville"></div>
+      <div class="card-body">
+        <span class="card-tag">Ville & Culture</span>
+        <h3>Libreville</h3>
+        <p>Capitale vibrante, marchés colorés, gastronomie locale et vie nocturne.</p>
+        <div class="card-footer">
+          <span class="price">À partir de <strong>180 €</strong></span>
+          <a href="pages/reservations.html?dest=libreville" class="btn-card">Réserver</a>
+        </div>
+      </div>
+    </article>
+    <article class="dest-card" data-dest="crystal">
+      <div class="card-img img-crystal"></div>
+      <div class="card-body">
+        <span class="card-tag">Aventure</span>
+        <h3>Monts de Cristal</h3>
+        <p>Randonnées en forêt, cascades, biodiversité unique au monde.</p>
+        <div class="card-footer">
+          <span class="price">À partir de <strong>220 €</strong></span>
+          <a href="pages/reservations.html?dest=crystal" class="btn-card">Réserver</a>
+        </div>
+      </div>
+    </article>
+    <article class="dest-card" data-dest="ivindo">
+      <div class="card-img img-ivindo"></div>
+      <div class="card-body">
+        <span class="card-tag">Nature</span>
+        <h3>Parc d'Ivindo</h3>
+        <p>Les chutes de Kongou, gorilles de plaine et forêts vierges.</p>
+        <div class="card-footer">
+          <span class="price">À partir de <strong>310 €</strong></span>
+          <a href="pages/reservations.html?dest=ivindo" class="btn-card">Réserver</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section class="experiences" id="experiences">
+  <div class="exp-left">
+    <span class="tag">Nos Expériences</span>
+    <h2>Des Moments<br><em>Exceptionnels</em></h2>
+    <p>Chaque voyage est conçu par nos experts locaux pour vous offrir l'authenticité absolue du Gabon.</p>
+    <a href="pages/reservations.html" class="btn-primary">Voir tous les circuits</a>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-item">
+      <div class="exp-icon">🦍</div>
+      <h4>Safari Gorilles</h4>
+      <p>Observation des gorilles de plaine dans leur habitat naturel</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-icon">🐋</div>
+      <h4>Observation Baleines</h4>
+      <p>Migration des baleines à bosse le long de la côte atlantique</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-icon">🌊</div>
+      <h4>Plongée & Surf</h4>
+      <p>Eaux turquoises et vagues parfaites sur les plages gabonaises</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-icon">🍃</div>
+      <h4>Trekking Forêt</h4>
+      <p>Immersion totale dans la forêt équatoriale primaire</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-icon">🎭</div>
+      <h4>Culture Fang</h4>
+      <p>Rencontre avec les communautés locales et leur patrimoine</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-icon">🌅</div>
+      <h4>Pêche Sportive</h4>
+      <p>Les meilleures eaux de pêche au goliath tigerfish d'Afrique</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-header">
+    <span class="tag">Avis Voyageurs</span>
+    <h2>Ils ont exploré avec nous</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Une expérience extraordinaire ! Les gorilles de la Lopé à quelques mètres de nous... Un moment qui restera gravé à jamais."</p>
+      <div class="testi-author">
+        <div class="avatar">ML</div>
+        <div><strong>Marie L.</strong><span>Paris, France</span></div>
+      </div>
+    </div>
+    <div class="testi-card featured-testi">
+      <div class="stars">★★★★★</div>
+      <p>"GabonExplore a organisé notre voyage de A à Z. Le chatbot IA m'a aidé à choisir le circuit parfait à 23h un samedi !"</p>
+      <div class="testi-author">
+        <div class="avatar">JK</div>
+        <div><strong>James K.</strong><span>London, UK</span></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"La réservation en ligne était simple, paiement sécurisé. L'équipe sur place était professionnelle et passionnée."</p>
+      <div class="testi-author">
+        <div class="avatar">SF</div>
+        <div><strong>Sofia F.</strong><span>Amsterdam, NL</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI CHATBOT SECTION -->
+<section class="ai-section" id="assistant">
+  <div class="ai-content">
+    <span class="tag">Assistant IA</span>
+    <h2>Votre Conseiller de<br><em>Voyage Intelligent</em></h2>
+    <p>Notre assistant IA est disponible 24h/24 pour répondre à toutes vos questions, vous aider à choisir votre circuit et préparer votre aventure gabonaise.</p>
+    <ul class="ai-features">
+      <li>✓ Disponible 24h/24, 7j/7</li>
+      <li>✓ Répond en français, anglais, espagnol</li>
+      <li>✓ Personnalise les recommandations</li>
+      <li>✓ Aide à la réservation en temps réel</li>
+    </ul>
+    <button onclick="openChat()" class="btn-primary">Parler à l'assistant</button>
+  </div>
+  <div class="ai-preview">
+    <div class="chat-preview">
+      <div class="chat-header">
+        <div class="chat-avatar">🌿</div>
+        <div><strong>Kaya – Assistant GabonExplore</strong><span>En ligne</span></div>
+      </div>
+      <div class="chat-messages">
+        <div class="msg bot">Bonjour ! Je suis Kaya, votre assistant de voyage. Quel type d'aventure vous attire au Gabon ? 🦍</div>
+        <div class="msg user">Je voudrais voir des gorilles</div>
+        <div class="msg bot">Excellent choix ! Le Parc de la Lopé est parfait pour vous. Je vous recommande notre circuit "Gorilles & Savane" de 7 jours. Voulez-vous que je vous donne les détails et les disponibilités ? 🌿</div>
+      </div>
+      <div class="chat-input-preview">
+        <span>Posez votre question...</span>
+        <button onclick="openChat()">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo">Gabon<span>Explore</span></div>
+      <p>Votre agence de tourisme premium au Gabon. Expériences authentiques, sécurité maximale.</p>
+      <div class="social-links">
+        <h6>Pinterest</h6><a href="#" aria-label="Pinterest">P</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Destinations</h5>
+      <ul>
+        <li><a href="pages/reservations.html?dest=lope">Parc de la Lopé</a></li>
+        <li><a href="pages/reservations.html?dest=loango">Parc de Loango</a></li>
+        <li><a href="pages/reservations.html?dest=libreville">Libreville</a></li>
+        <li><a href="pages/reservations.html?dest=ivindo">Parc d'Ivindo</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="pages/reservations.html">Réservations</a></li>
+        <li><a href="#assistant">Assistant IA</a></li>
+        <li><a href="#">Transferts</a></li>
+        <li><a href="#">Hébergements</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li>📧 contact@gabonexplore.ga</li>
+        <li>MAKAYA ETAF Zibawi Victoria</li>
+        <li>RATONDA MOUELI Christ </li>
+        <li>LOUEMBET Ivrel </li>
+        
+        <li>📍 Boulevard Triomphal, Libreville, Gabon</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 GabonExplore. Tous droits réservés.</span>
+    <div class="payment-icons">
+      <span class="pay-icon">VISA</span>
+      <span class="pay-icon">MC</span>
+      <span class="pay-icon">🔒 SSL</span>
+    </div>
+  </div>
+</footer>
+
+<!-- AI CHATBOT WIDGET -->
+<div id="chatWidget" class="chat-widget hidden">
+  <div class="chat-widget-header">
+    <div>
+      <strong>Kaya – Assistant GabonExplore</strong>
+      <span id="chatStatus">● En ligne</span>
+    </div>
+    <button onclick="closeChat()" aria-label="Fermer">✕</button>
+  </div>
+  <div id="chatMessages" class="chat-widget-messages">
+    <div class="wmsg bot">
+      <div class="bot-avatar">🌿</div>
+      <div class="bubble">Bonjour ! Je suis <strong>Kaya</strong>, votre assistant de voyage GabonExplore. Comment puis-je vous aider aujourd'hui ?<br><br>
+      <div class="quick-replies">
+        <button onclick="sendQuick('Je veux réserver un circuit')">📋 Réserver un circuit</button>
+        <button onclick="sendQuick('Quelles destinations recommandez-vous ?')">🗺️ Destinations</button>
+        <button onclick="sendQuick('Quels sont vos tarifs ?')">💰 Tarifs</button>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="chat-widget-input">
+    <input type="text" id="chatInput" placeholder="Posez votre question..." onkeydown="if(event.key==='Enter')sendMessage()">
+    <button onclick="sendMessage()">➤</button>
+  </div>
+</div>
+<button id="chatToggle" onclick="openChat()" aria-label="Ouvrir le chat">💬</button>
+
+<script src="js/main.js"></script>
+<script src="js/chatbot.js"></script>
+</body>
+</html>

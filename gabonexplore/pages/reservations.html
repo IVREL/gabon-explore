@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Réservations – GabonExplore</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/reservations.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar" class="scrolled">
+  <a href="../index.html" class="logo">Gabon<span>Explore</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#destinations">Destinations</a></li>
+    <li><a href="../index.html#experiences">Expériences</a></li>
+    <li><a href="reservations.html" class="active">Réservations</a></li>
+    <li><a href="../index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="reservations.html" class="btn-primary">Réserver</a>
+  </div>
+</nav>
+
+<main class="booking-page">
+
+  <!-- HEADER -->
+  <section class="booking-header">
+    <span class="tag">Réservation Sécurisée</span>
+    <h1>Planifiez Votre<br><em>Aventure Gabonaise</em></h1>
+    <p>Paiement 100% sécurisé · Annulation gratuite jusqu'à 30 jours avant départ</p>
+    <div class="trust-badges">
+      <span>🔒 SSL Sécurisé</span>
+      <span>💳 Visa / Mastercard</span>
+      <span>✓ Confirmation immédiate</span>
+      <span>🌿 Guide local inclus</span>
+    </div>
+  </section>
+
+  <!-- BOOKING STEPS -->
+  <div class="booking-container">
+
+    <!-- STEP INDICATOR -->
+    <div class="steps-indicator">
+      <div class="step active" id="step-ind-1">
+        <div class="step-num">1</div>
+        <span>Votre Circuit</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" id="step-ind-2">
+        <div class="step-num">2</div>
+        <span>Vos Informations</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" id="step-ind-3">
+        <div class="step-num">3</div>
+        <span>Paiement</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" id="step-ind-4">
+        <div class="step-num">4</div>
+        <span>Confirmation</span>
+      </div>
+    </div>
+
+    <div class="booking-layout">
+
+      <!-- FORM AREA -->
+      <div class="booking-form-area">
+
+        <!-- STEP 1: CIRCUIT CHOICE -->
+        <div class="booking-step active" id="step1">
+          <h2>Choisissez votre circuit</h2>
+
+          <div class="form-group">
+            <label for="destSelect">Destination</label>
+            <select id="destSelect" onchange="updatePrice()">
+              <option value="">-- Sélectionner une destination --</option>
+              <option value="lope" data-price="290" data-days="7">Parc de la Lopé – Safari Gorilles (7 jours) – 290€/pers</option>
+              <option value="loango" data-price="350" data-days="7">Parc de Loango – Côte Sauvage (7 jours) – 350€/pers</option>
+              <option value="libreville" data-price="180" data-days="3">Libreville – Ville & Culture (3 jours) – 180€/pers</option>
+              <option value="crystal" data-price="220" data-days="5">Monts de Cristal – Aventure (5 jours) – 220€/pers</option>
+              <option value="ivindo" data-price="310" data-days="7">Parc d'Ivindo – Chutes de Kongou (7 jours) – 310€/pers</option>
+              <option value="gabon-full" data-price="890" data-days="14">Grand Tour du Gabon – Intégral (14 jours) – 890€/pers</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="dateDepart">Date de départ</label>
+              <input type="date" id="dateDepart" min="">
+            </div>
+            <div class="form-group">
+              <label for="nbPersonnes">Nombre de personnes</label>
+              <select id="nbPersonnes" onchange="updatePrice()">
+                <option value="1">1 personne</option>
+                <option value="2" selected>2 personnes</option>
+                <option value="3">3 personnes</option>
+                <option value="4">4 personnes</option>
+                <option value="5">5+ personnes (groupe)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="typeLogement">Type d'hébergement</label>
+            <div class="radio-group">
+              <label class="radio-card">
+                <input type="radio" name="logement" value="standard" checked onchange="updatePrice()">
+                <div class="radio-content">
+                  <strong>Standard</strong>
+                  <span>Lodges confortables</span>
+                  <span class="price-add">Inclus</span>
+                </div>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="logement" value="premium" onchange="updatePrice()">
+                <div class="radio-content">
+                  <strong>Premium</strong>
+                  <span>Lodges de luxe</span>
+                  <span class="price-add">+80€/pers</span>
+                </div>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="logement" value="lodge" onchange="updatePrice()">
+                <div class="radio-content">
+                  <strong>Écolodge</strong>
+                  <span>Immersion totale</span>
+                  <span class="price-add">+40€/pers</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Options supplémentaires</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item">
+                <input type="checkbox" value="30" onchange="updatePrice()">
+                <span>🚁 Survol en hélicoptère (+30€)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" value="50" onchange="updatePrice()">
+                <span>📸 Photographe professionnel (+50€)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" value="25" onchange="updatePrice()">
+                <span>🎒 Équipement de randonnée (+25€)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" value="60" onchange="updatePrice()">
+                <span>🍽️ Cours de cuisine gabonaise (+60€)</span>
+              </label>
+            </div>
+          </div>
+
+          <button class="btn-step" onclick="goToStep(2)">Continuer →</button>
+        </div>
+
+        <!-- STEP 2: PERSONAL INFO -->
+        <div class="booking-step" id="step2">
+          <h2>Vos informations</h2>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="prenom">Prénom</label>
+              <input type="text" id="prenom" placeholder="Marie" required>
+            </div>
+            <div class="form-group">
+              <label for="nom">Nom</label>
+              <input type="text" id="nom" placeholder="Dupont" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="marie@exemple.fr" required>
+          </div>
+
+          <div class="form-group">
+            <label for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" placeholder="+33 6 12 34 56 78" required>
+          </div>
+
+          <div class="form-group">
+            <label for="nationalite">Nationalité</label>
+            <input type="text" id="nationalite" placeholder="Française">
+          </div>
+
+          <div class="form-group">
+            <label for="passeport">Numéro de passeport</label>
+            <input type="text" id="passeport" placeholder="Requis pour le visa Gabon">
+            <small>Nécessaire pour les formalités d'entrée au Gabon</small>
+          </div>
+
+          <div class="form-group">
+            <label for="demandes">Demandes spéciales</label>
+            <textarea id="demandes" rows="3" placeholder="Régime alimentaire, mobilité réduite, anniversaire..."></textarea>
+          </div>
+
+          <div class="form-group newsletter-opt">
+            <label class="checkbox-item">
+              <input type="checkbox" id="newsletter">
+              <span>Je souhaite recevoir les offres spéciales GabonExplore</span>
+            </label>
+          </div>
+
+          <div class="step-buttons">
+            <button class="btn-ghost" onclick="goToStep(1)">← Retour</button>
+            <button class="btn-step" onclick="goToStep(3)">Passer au paiement →</button>
+          </div>
+        </div>
+
+        <!-- STEP 3: PAYMENT -->
+        <div class="booking-step" id="step3">
+          <h2>Paiement sécurisé</h2>
+
+          <div class="payment-security-notice">
+            <span>🔒</span>
+            <div>
+              <strong>Paiement 100% sécurisé par Stripe</strong>
+              <p>Vos données bancaires sont chiffrées et protégées. GabonExplore ne stocke aucune information de carte.</p>
+            </div>
+          </div>
+
+          <div class="payment-methods">
+            <div class="pay-method active" id="pm-card">
+              <div class="method-icons">
+                <span class="visa-badge">VISA</span>
+                <span class="mc-badge">MC</span>
+              </div>
+              <span>Carte bancaire</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="cardName">Nom sur la carte</label>
+            <input type="text" id="cardName" placeholder="MARIE DUPONT">
+          </div>
+
+          <!-- Stripe Card Element -->
+          <div class="form-group">
+            <label>Numéro de carte</label>
+            <div id="stripe-card-element" class="stripe-element">
+              <!-- Stripe injecte ici -->
+              <div class="stripe-placeholder">
+                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCard(this)">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Expiration</label>
+              <input type="text" id="cardExpiry" placeholder="MM / AA" maxlength="7" oninput="formatExpiry(this)">
+            </div>
+            <div class="form-group">
+              <label>CVV</label>
+              <input type="text" id="cardCvc" placeholder="123" maxlength="4">
+            </div>
+          </div>
+
+          <div class="cgv-check">
+            <label class="checkbox-item">
+              <input type="checkbox" id="cgvAccept" required>
+              <span>J'accepte les <a href="#" style="color:var(--gold)">conditions générales de vente</a> et la <a href="#" style="color:var(--gold)">politique d'annulation</a></span>
+            </label>
+          </div>
+
+          <div class="step-buttons">
+            <button class="btn-ghost" onclick="goToStep(2)">← Retour</button>
+            <button class="btn-pay" id="payBtn" onclick="processPayment()">
+              <span id="payBtnText">💳 Payer <span id="totalDisplay">0€</span></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 4: CONFIRMATION -->
+        <div class="booking-step" id="step4">
+          <div class="confirmation-screen">
+            <div class="confirm-icon">✅</div>
+            <h2>Réservation Confirmée !</h2>
+            <p id="confirmMsg">Merci pour votre réservation. Un email de confirmation vous a été envoyé.</p>
+            <div class="booking-ref">
+              <strong>Référence de réservation</strong>
+              <span id="bookingRef">GE-2025-XXXXX</span>
+            </div>
+            <div class="next-steps">
+              <div class="next-step-item">
+                <span>📧</span>
+                <div><strong>Email de confirmation</strong><p>Vérifiez votre boîte mail dans les prochaines minutes</p></div>
+              </div>
+              <div class="next-step-item">
+                <span>📞</span>
+                <div><strong>Contact de votre guide</strong><p>Votre guide local vous contactera 7 jours avant le départ</p></div>
+              </div>
+              <div class="next-step-item">
+                <span>📋</span>
+                <div><strong>Documents requis</strong><p>Passeport valide 6 mois, visa Gabon (nous vous aidons)</p></div>
+              </div>
+            </div>
+            <a href="../index.html" class="btn-primary">Retour à l'accueil</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ORDER SUMMARY -->
+      <div class="order-summary" id="orderSummary">
+        <h3>Récapitulatif</h3>
+        <div id="summaryDest" class="summary-item">
+          <span>Destination</span>
+          <strong id="sumDest">–</strong>
+        </div>
+        <div class="summary-item">
+          <span>Dates</span>
+          <strong id="sumDates">–</strong>
+        </div>
+        <div class="summary-item">
+          <span>Voyageurs</span>
+          <strong id="sumPax">–</strong>
+        </div>
+        <div class="summary-item">
+          <span>Hébergement</span>
+          <strong id="sumLogement">Standard</strong>
+        </div>
+        <div class="summary-divider"></div>
+        <div class="summary-item subtotal">
+          <span>Sous-total</span>
+          <strong id="sumSubtotal">0€</strong>
+        </div>
+        <div class="summary-item" id="sumOptionsRow" style="display:none">
+          <span>Options</span>
+          <strong id="sumOptions">0€</strong>
+        </div>
+        <div class="summary-divider"></div>
+        <div class="summary-item total">
+          <span>Total TTC</span>
+          <strong id="sumTotal">0€</strong>
+        </div>
+        <div class="summary-deposit">
+          <p>Acompte aujourd'hui (30%)</p>
+          <strong id="sumDeposit">0€</strong>
+        </div>
+        <div class="summary-badges">
+          <span>🔒 SSL</span>
+          <span class="visa-badge-sm">VISA</span>
+          <span class="mc-badge-sm">MC</span>
+          <span>✓ Confirmé</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- Chat Widget (copied from index) -->
+<div id="chatWidget" class="chat-widget hidden">
+  <div class="chat-widget-header">
+    <div>
+      <strong>Kaya – Assistant GabonExplore</strong>
+      <span id="chatStatus">● En ligne</span>
+    </div>
+    <button onclick="closeChat()" aria-label="Fermer">✕</button>
+  </div>
+  <div id="chatMessages" class="chat-widget-messages">
+    <div class="wmsg bot">
+      <div class="bot-avatar">🌿</div>
+      <div class="bubble">Besoin d'aide pour votre réservation ? Je suis là ! 🌿</div>
+    </div>
+  </div>
+  <div class="chat-widget-input">
+    <input type="text" id="chatInput" placeholder="Posez votre question..." onkeydown="if(event.key==='Enter')sendMessage()">
+    <button onclick="sendMessage()">➤</button>
+  </div>
+</div>
+<button id="chatToggle" onclick="openChat()" aria-label="Ouvrir le chat">💬</button>
+
+<script src="../js/main.js"></script>
+<script src="../js/chatbot.js"></script>
+<script src="../js/reservations.js"></script>
+</body>
+</html>
